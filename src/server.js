@@ -11,6 +11,8 @@ fastify.register(require('fastify-swagger'), {
 
 fastify.register(require('./resources/users/user.router'));
 
+fastify.register(require('./resources/boards/board.router'));
+
 const start = async () => {
   try {
     await fastify.listen(PORT);
