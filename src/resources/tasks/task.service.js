@@ -8,7 +8,12 @@ const getAllTasks = async (request, reply) => {
 const getTaskById = async (request, reply) => {
   const { id } = request.params;
   const task = await taskRepository.getById(id);
-  reply.code(200).send(task);
+  if (task) {
+    reply.code(200).send(task);
+  } else {
+    reply.code(404).send(new Error(`Task ${id} not found`));
+  }
+  
 }
 
 const createTask = async (request, reply) => {
@@ -31,6 +36,10 @@ const deleteTaskById = async (request, reply) => {
   reply.send({ message: `Task ${id} has been deleted`});
 }
 
+const deleteBoardTasks = async (boardId) => {
+  await taskRepository.deleteByBoardId(boardId);
+}
+
 const unassignTasks = async (userId) => {
   await taskRepository.unassign(userId);
 };
@@ -41,5 +50,6 @@ module.exports = {
   createTask,
   updateTaskById,
   deleteTaskById,
+  deleteBoardTasks,
   unassignTasks
 }

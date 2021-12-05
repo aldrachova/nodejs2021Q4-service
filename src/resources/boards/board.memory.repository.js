@@ -20,6 +20,7 @@ const updateById = (id, title, columns) => {
 
 const deleteById = (id) => {
   boards = boards.filter(board => board.id !== id);
+  console.log(boards);
 }
 
 module.exports = {

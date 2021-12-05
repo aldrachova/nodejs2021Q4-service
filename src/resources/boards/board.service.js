@@ -1,4 +1,5 @@
 const boardRepository = require('./board.memory.repository');
+const { deleteBoardTasks } = require('../tasks/task.service');
 
 const getAllBoards = async (request, reply) => {
   const boards = await boardRepository.getAll();
@@ -8,7 +9,11 @@ const getAllBoards = async (request, reply) => {
 const getBoardById = async (request, reply) => {
   const { id } = request.params;
   const board = await boardRepository.getById(id);
-  reply.code(200).send(board);
+  if(board) {
+    reply.code(200).send(board);
+  } else {
+    reply.code(404).send(new Error(`Board ${id} not found`));
+  }
 }
 
 const createBoard = async (request, reply) => {
@@ -26,8 +31,9 @@ const updateBoardById = async (request, reply) => {
 
 const deleteBoardById = async (request, reply) => {
   const { id } = request.params;
+  await deleteBoardTasks(id);
   await boardRepository.deleteById(id);
-  reply.send({ message: `Board ${id} has been deleted`});
+  reply.code(200).send({ message: `Board ${id} has been deleted`});
 }
 
 module.exports = {
