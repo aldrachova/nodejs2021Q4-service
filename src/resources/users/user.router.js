@@ -3,9 +3,9 @@ const { getAllUsers, getUserById, createUser, updateUserById, deleteUserById } =
 const user = {
   type: 'object',
   properties: {
-    id: {type: 'string'},
-    name: {type: 'string'},
-    login: {type: 'string'},
+    id: { type: 'string' },
+    name: { type: 'string' },
+    login: { type: 'string' },
   }
 }
 
@@ -37,8 +37,8 @@ const postUserOptions = {
       required: ['name', 'login', 'password'],
       properties: {
         name: { type: 'string' },
-        login: { type: 'string'},
-        password: {type: 'string'},
+        login: { type: 'string' },
+        password: { type: 'string' },
       },
     },
     response: {

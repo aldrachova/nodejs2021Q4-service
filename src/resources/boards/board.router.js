@@ -4,18 +4,18 @@ const { getAllBoards, getBoardById, createBoard, updateBoardById, deleteBoardByI
 const column = {
   type: 'object',
   properties: {
-    id: {type: 'string'},
-    title: {type: 'string'},
-    order: {type: 'number'},
+    id: { type: 'string' },
+    title: { type: 'string' },
+    order: { type: 'number' },
   }
 };
 
 const board = {
   type: 'object',
   properties: {
-    id: {type: 'string'},
-    title: {type: 'string'},
-    columns: {type: 'array',
+    id: { type: 'string' },
+    title: { type: 'string' },
+    columns: { type: 'array',
       columns: column },
   }
 }
@@ -48,7 +48,7 @@ const postBoardOptions = {
       required: ['title', 'columns'],
       properties: {
         title: { type: 'string' },
-        columns: { type: 'array'},
+        columns: { type: 'array' },
       },
     },
     response: {
