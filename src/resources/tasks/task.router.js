@@ -38,7 +38,7 @@ const postTaskOptions = {
   schema: {
     body: {
       type: 'object',
-      required: ['title', 'description', 'userId', 'boardId', 'columnId'],
+      required: ['title', 'description', 'userId', 'boardId'],
       properties: {
         title: { type: 'string' },
         description: { type: 'string' },
