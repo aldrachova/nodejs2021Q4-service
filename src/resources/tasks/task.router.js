@@ -6,9 +6,10 @@ const task = {
     id: { type: 'string' },
     title: { type: 'string' },
     description: { type: 'string' },
-    userId: { type: 'string' },
-    boardId: { type: 'string' },
-    columnId: { type: 'string' },
+    order: { type: 'number' },
+    userId: { type: ['null','string'] },
+    boardId: { type: ['null','string'] },
+    columnId: { type: ['null','string'] },
   }
 }
 

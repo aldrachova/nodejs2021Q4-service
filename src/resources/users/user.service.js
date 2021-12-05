@@ -1,4 +1,5 @@
 const userRepository = require('./user.memory.repository');
+const { unassignTasks } = require('../tasks/task.service');
 
 const getAllUsers = async (request, reply) => {
   const users = await userRepository.getAll();
@@ -25,7 +26,8 @@ const updateUserById = async (request, reply) => {
 }
 
 const deleteUserById = async (request, reply) => {
-  const {id} = request.params;
+  const { id } = request.params;
+  await unassignTasks(id);
   await userRepository.deleteById(id);
   reply.send({ message: `User ${id} has been deleted`});
 }

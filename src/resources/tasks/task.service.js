@@ -12,7 +12,8 @@ const getTaskById = async (request, reply) => {
 }
 
 const createTask = async (request, reply) => {
-  const { title, order, description, userId, boardId, columnId } = request.body;
+  const { title, order, description, userId, columnId } = request.body;
+  const boardId = request.url.split('/')[2];
   const task = await taskRepository.create(title, order, description, userId, boardId, columnId);
   reply.code(201).send(task);
 }
@@ -30,10 +31,15 @@ const deleteTaskById = async (request, reply) => {
   reply.send({ message: `Task ${id} has been deleted`});
 }
 
+const unassignTasks = async (userId) => {
+  await taskRepository.unassign(userId);
+};
+
 module.exports = {
   getAllTasks,
   getTaskById,
   createTask,
   updateTaskById,
-  deleteTaskById
+  deleteTaskById,
+  unassignTasks
 }
