@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/aldrachova/nodejs2021Q4-service"
   },
   "type": "commonjs",
   "description": "REST service starter for RS School",
@@ -19,7 +19,7 @@
     "school",
     "rest",
     "node",
-    "express",
+    "fastify",
     "autotest",
     "starter"
   ],
@@ -46,12 +46,15 @@
   "dependencies": {
     "cross-env": "7.0.3",
     "dotenv": "10.0.0",
-    "express": "4.17.1",
-    "swagger-ui-express": "4.1.6",
+    "fastify": "^3.24.1",
+    "fastify-swagger": "^4.12.6",
     "uuid": "8.3.2",
     "yamljs": "0.3.0"
   },
   "devDependencies": {
+    "@types/node": "^16.11.13",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
     "chai": "4.3.4",
     "debug": "4.3.2",
     "dirty-chai": "2.0.1",
@@ -64,8 +67,10 @@
     "husky": "^4.3.8",
     "jest": "27.3.1",
     "lint-staged": "12.0.3",
-    "nodemon": "2.0.15",
+    "nodemon": "^2.0.15",
     "prettier": "2.4.1",
-    "supertest": "6.1.6"
+    "supertest": "6.1.6",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
   }
 }
